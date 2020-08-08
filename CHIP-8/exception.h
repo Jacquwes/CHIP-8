@@ -33,8 +33,8 @@ namespace Chip8
 		inline const ExceptionType& exception_type()	{ return exception_type_;	}
 
 	private:
-		uint16_t address_;
-		std::string description_;
-		ExceptionType exception_type_;
+		uint16_t		address_;
+		std::string		description_;
+		ExceptionType	exception_type_;
 	};
 } // namespace Chip8

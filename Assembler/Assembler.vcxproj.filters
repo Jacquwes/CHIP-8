@@ -13,10 +13,47 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Chip8 files">
+      <UniqueIdentifier>{0c55400e-3f7c-4d00-90d6-1059f199613f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chip8 files\Source files">
+      <UniqueIdentifier>{c31b2eaf-5498-4ed2-9ff3-7181b5484a52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chip8 files\Compiled">
+      <UniqueIdentifier>{b5c23da9-316d-4bfe-8cc1-0c067e69a22a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="assembler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="program.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="instruction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="program.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="instruction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="exception.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="test.c8">
+      <Filter>Chip8 files\Source files</Filter>
+    </None>
+    <None Include="test.cc8">
+      <Filter>Chip8 files\Compiled</Filter>
+    </None>
   </ItemGroup>
 </Project>

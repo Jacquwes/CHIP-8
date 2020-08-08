@@ -42,7 +42,7 @@ namespace Chip8
 	void Chip8::LoadFontset(const std::array<uint8_t, Constants::kFontsetMaxSize>& fontset)
 	{
 		for (size_t i = 0; i < fontset.size(); i++)
-			memory_[i] = fontset[i];
+			memory_[0x50 + i] = fontset[i];
 	}
 
 	void Chip8::LoadProgram(const std::array<uint8_t, Constants::kProgramMaxSize>& program)
@@ -78,19 +78,22 @@ namespace Chip8
 			case Constants::kReturn:
 				if (!stack_pointer_)
 					ended_ = true;
-				program_counter_ = stack_[stack_pointer_] + 1;
-				stack_[stack_pointer_--] = 0;
+				else
+				{
+					program_counter_ = stack_[--stack_pointer_] + 2;
+					stack_[stack_pointer_] = 0;
+				}
 				break;
 			default:
 				UnknownOpcode();
 			}
 			break;
 		case Constants::kGoto:
-			program_counter_ = opcode & 0x0fff;
+			program_counter_ = (opcode & 0x0fff) + Constants::kFontsetMaxSize;
 			break;
 		case Constants::kCallSubroutine:
 			stack_[stack_pointer_++] = program_counter_;
-			program_counter_ = opcode & 0x0fff;
+			program_counter_ = (opcode & 0x0fff) + Constants::kFontsetMaxSize;
 			break;
 		case Constants::kSkipNextIfVxEquals:
 			if ((registers_[(opcode & 0x0f00) >> 8]) == (opcode & 0x00ff))
