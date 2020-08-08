@@ -1,5 +1,7 @@
 #pragma once
 
+// This is not C
+
 enum Opcodes
 {
 	// Assign
