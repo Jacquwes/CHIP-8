@@ -1,9 +1,1 @@
-_main:
-clear		; slt return ici
-call comparison
-return
-
-
-comparison:
-skipeq va, ff
-return
+load v0

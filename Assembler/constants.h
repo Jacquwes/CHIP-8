@@ -14,7 +14,7 @@ enum Opcodes
 	kSkipNextIfVxDifferentVy = 0x9000,
 
 	// Const
-	kSetVxtoNN = 0x6000,
+	kSetVxToNN = 0x6000,
 	kAddNNToVx = 0x7000,
 
 	// Display

@@ -28,8 +28,10 @@ void Program::Parse(const std::string& raw_program)
 		}
 		else if (character == ';')
 			is_comment = true;
-		else if (!is_comment && character != '\t')
-			lines.back() += character;
+		else if (!is_comment)
+			lines.back() += (character == '\t')
+				? ' '
+				: character;
 
 	while (lines.back().empty())
 		lines.pop_back();
