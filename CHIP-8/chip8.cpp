@@ -21,8 +21,8 @@ namespace Chip8
 		stack_				.fill(0);
 		stack_pointer_		= 0;
 
-		// azerty			{ '1', '2', '3', '4', 'a', 'z', 'e', 'r', 'q', 's', 'd', 'f', 'w', 'x', 'c', 'v' };
-		// qwerty			{ '1', '2', '3', '4', 'q', 'w', 'e', 'r', 'a', 's', 'd', 'f', 'z', 'x', 'c', 'v' };
+		// azerty			= { '1', '2', '3', '4', 'a', 'z', 'e', 'r', 'q', 's', 'd', 'f', 'w', 'x', 'c', 'v' };
+		// qwerty			= { '1', '2', '3', '4', 'q', 'w', 'e', 'r', 'a', 's', 'd', 'f', 'z', 'x', 'c', 'v' };
 		keymap_				= { '1', '2', '3', '4', 'A', 'Z', 'E', 'R', 'Q', 'S', 'D', 'F', 'W', 'X', 'C', 'V' };
 		keys_				.reset();
 
@@ -257,7 +257,7 @@ namespace Chip8
 	{
 		while (!ended_)
 		{
-			int64_t current_time = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count() - last_tick_;
+			int64_t current_time = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
 			if (current_time - last_tick_ >= std::llroundf((1.f / 60.f) * 1000))
 			{
 				last_tick_ = current_time;

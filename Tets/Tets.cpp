@@ -32,7 +32,7 @@ int main()
 
 	chip8.RunProgram();
 
-	std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count() - start;
+	std::cout << "Duration : " << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count() - start << "ms" << std::endl;
 
 	return 0;
 }
