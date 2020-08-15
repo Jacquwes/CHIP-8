@@ -3,6 +3,8 @@
 #include <Windows.h>
 
 #include <array>
+#include <bitset>
+#include <vector>
 
 #include "constants.h"
 
@@ -14,11 +16,12 @@ namespace Chip8
 		Screen();
 
 		void Clear();
+		void DrawSprite(const std::vector<std::bitset<8>>& sprite, uint8_t x, uint8_t y);
 
 	private:
 		HANDLE console_;
-		std::array<int16_t, Constants::kScreenSize> pixels_;
-		int32_t updated_pixels_;
+		std::array<uint16_t, Constants::kScreenSize> pixels_;
+		uint32_t updated_pixels_;
 
 		void UpdatePixels();
 	};

@@ -89,7 +89,7 @@ namespace Chip8
 			}
 			break;
 		case Constants::kGoto:
-			program_counter_ = (opcode & 0x0fff) + Constants::kFontsetMaxSize;
+			program_counter_ = (opcode & 0x0fff) + Constants::kFontsetMaxSize - 2;
 			break;
 		case Constants::kCallSubroutine:
 			stack_[stack_pointer_++] = program_counter_;
@@ -166,7 +166,7 @@ namespace Chip8
 				program_counter_ += 2;
 			break;
 		case Constants::kSetI:
-			index_register_ = opcode & 0x0fff;
+			index_register_ = (opcode & 0x0fff) + Constants::kFontsetMaxSize;
 			break;
 		case Constants::kJumpNNNPlusV0:
 			program_counter_ = registers_[0] + (opcode & 0x0fff);
@@ -180,8 +180,16 @@ namespace Chip8
 			break;
 		}
 		case Constants::kDrawSprite:
-			// TODO: implement this part
+		{
+			uint8_t x		= registers_[(opcode & 0x0f00) >> 8];
+			uint8_t y		= registers_[(opcode & 0x00f0) >> 4];
+			uint8_t height	= opcode & 0x000f;
+			std::vector<std::bitset<8>> sprite;
+			for (int i = 0; i < height; i++)
+				sprite.push_back(memory_[index_register_ + i]);
+			screen_.DrawSprite(sprite, x, y);
 			break;
+		}
 		case 0xe000:
 			switch (opcode & 0xf0ff)
 			{

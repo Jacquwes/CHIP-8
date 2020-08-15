@@ -4,12 +4,20 @@
 
 #include "CHIP-8/chip8.h"
 
+void Log(const std::wstring& message)
+{
+	std::wcout << message;
+}
+
 int main()
 {
     Chip8::Chip8 chip8;
 
 	std::array<uint8_t, 0x1000 - 0x200> raw_program;
 	std::array<uint8_t, 0x200> fontset;
+
+	raw_program.fill(0);
+	fontset.fill(0);
 
 	std::ifstream input("../Assembler/test.cc8", std::ios::binary | std::ios::in);
 	uint16_t i = 0;

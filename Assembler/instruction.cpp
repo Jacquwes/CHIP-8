@@ -89,7 +89,7 @@ uint16_t Instruction::GetOpcode()
 			? kSetVxToNN | (std::stoi(&operands_[0][1], nullptr, 16) << 8) | std::stoi(operands_[1], nullptr, 16)
 			: kSetVxToVy | (std::stoi(&operands_[0][1], nullptr, 16) << 8) | (std::stoi(&operands_[1][1], nullptr, 16) << 4);
 	else if (operation_ == "seti")
-		opcode = kSetI | (std::stoi(&operands_[0][1], nullptr, 16) << 8) | std::stoi(operands_[1], nullptr, 16);
+		opcode = kSetI | std::stoi(operands_[0], nullptr, 16);
 	else if (operation_ == "getdelay")
 		opcode = kSetToDelayTimer | (std::stoi(&operands_[0][1], nullptr, 16) << 8);
 	else if (operation_ == "getkey")
@@ -129,6 +129,13 @@ uint16_t Instruction::GetOpcode()
 		opcode = kRandAndNN | (std::stoi(&operands_[0][1], nullptr, 16) << 8) | std::stoi(operands_[1], nullptr, 16);
 	else if (operation_ == "addi")
 		opcode = kAddVxToI | (std::stoi(&operands_[0][1], nullptr, 16) << 8);
+
+
+
+	// data
+	else if (operation_ == "data")
+		opcode = (std::stoi(operands_[0], nullptr, 16) << 8) | std::stoi(operands_[1], nullptr, 16);
+
 
 
 
